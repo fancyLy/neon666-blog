@@ -10,20 +10,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write  # 允许写入内容到gh-pages分支
+    
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
-        submodules: true  # 检查子模块（主题）
+        submodules: 'recursive'  # 递归检查子模块
+        fetch-depth: 0  # 获取所有历史记录
         
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'  # 使用更稳定的Node.js 20
+        cache: 'npm'  # 启用npm缓存
         
     - name: Install Dependencies
       run: |
-        npm install
+        npm ci  # 使用ci而不是install，确保依赖一致性
         npm install hexo-cli -g
         
     - name: Generate Site
@@ -32,9 +37,10 @@ jobs:
         hexo generate
         
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
         publish_branch: gh-pages  # 部署分支
         cname: neon666.xyz  # 自定义域名
+        force_orphan: true  # 强制创建孤儿分支，避免历史冲突
