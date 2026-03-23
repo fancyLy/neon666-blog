@@ -1,0 +1,181 @@
+# Butterfly Theme Configuration
+# Docs: https://butterfly.js.org/
+
+# 主题配置
+theme_color:
+  enable: true
+  main: "#49b1f5"
+  paginator: "#00c4b6"
+  button_hover: "#FF7242"
+  text_selection: "#00c4b6"
+  link_color: "#99a9bf"
+  link_hover_color: "#49b1f5"
+  link_color_dark: "#bbbbbb"
+  link_hover_color_dark: "#0084FF"
+
+# 网站图标
+favicon: /img/favicon.png
+apple_touch_icon: /img/apple-touch-icon.png
+
+# 网站副标题
+subtitle:
+  enable: true
+  # 打字效果
+  effect: true
+  # 循环或者只打字一次
+  loop: true
+  # 来源: 配置数组或者 api
+  source: api
+  # api: https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json
+  api: https://v1.hitokoto.cn
+  # 自定义数组
+  custom:
+    - 记录学习与成长
+    - 技术学习笔记
+    - 编程心得分享
+    - 持续进步中
+
+# 菜单配置
+menu:
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  关于: /about/ || fas fa-user-circle
+
+# 侧边栏
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: 技术学习者 | 编程爱好者
+    button:
+      enable: true
+      icon: fas fa-envelope
+      text: 联系我
+      link: mailto:neon@neon666.xyz
+  card_announcement:
+    enable: true
+    content: 欢迎来到我的学习笔记博客！
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date # date or updated
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    sort: name # name, count, slug
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random # random, name, length
+    order: 1 # 1, -1
+    sort: random # random, name, length
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+  card_webinfo:
+    enable: true
+
+# 文章页面
+post:
+  meta:
+    date_type: created
+  reward:
+    enable: false
+  copyright:
+    enable: true
+    decode: false
+  share:
+    enable: true
+  related_post:
+    enable: true
+    limit: 6
+  post_pagination:
+    enable: true
+
+# 代码高亮
+highlight_theme: mac
+highlight_copy: true
+highlight_lang: true
+highlight_shrink: false
+code_word_wrap: false
+
+# 搜索
+local_search:
+  enable: true
+  preload: true
+
+# 评论系统
+comments:
+  use: giscus
+  giscus:
+    repo: fancyLy/neon666-blog
+    repo_id: ""
+    category: "Announcements"
+    category_id: ""
+    mapping: pathname
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: bottom
+    theme: preferred_color_scheme
+    lang: zh-CN
+    loading: lazy
+
+# 页脚
+footer:
+  owner:
+    enable: true
+    since: 2026
+  custom_text: 
+  copyright: false
+  ICP:
+    enable: false
+    url: http://beian.miit.gov.cn/
+
+# 访问统计
+busuanzi:
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+# 数学公式
+math:
+  enable: true
+  per_page: true
+  engine: mathjax
+
+# 图片灯箱
+fancybox: true
+
+# 夜间模式
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: 1
+
+# 打字效果
+activate_power_mode:
+  enable: false
+
+# 背景特效
+canvas_ribbon:
+  enable: false
+
+# 音乐播放器
+aplayer:
+  enable: false

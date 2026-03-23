@@ -1,0 +1,40 @@
+name: Deploy Hexo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # 默认分支
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: true  # 检查子模块（主题）
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install Dependencies
+      run: |
+        npm install
+        npm install hexo-cli -g
+        
+    - name: Generate Site
+      run: |
+        hexo clean
+        hexo generate
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        publish_branch: gh-pages  # 部署分支
+        cname: neon666.xyz  # 自定义域名
